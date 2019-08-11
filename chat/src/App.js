@@ -20,10 +20,12 @@ class App extends React.Component  {
     if(typeof(WebSocket)=="undefined") { 
         alert("Your browser does not support WebSockets. Try to use Chrome or Safari."); 
     } else {
-        this.socket.onmessage = (event) =>  {
-          this.data = JSON.parse(event.data);
-          const arr = JSON.parse(event.data);
-          this.setState({data: arr});
+        this.socket.onopen = () => {
+          this.socket.onmessage = (event) =>  {
+            const arr = JSON.parse(event.data);
+            const res = this.state.data.concat(...arr);
+            this.setState({data: res});
+          }
         }
         this.socket.onerror = (error) => {
             console.log('WebSocket Error: ' + error);

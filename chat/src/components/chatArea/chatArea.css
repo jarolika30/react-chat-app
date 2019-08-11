@@ -1,4 +1,5 @@
 .chat {
     grid-area: chat;
     background: #dad9dc;
+    overflow: scroll;
 }
