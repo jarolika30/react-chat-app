@@ -15,3 +15,25 @@
     margin: 0 auto;
     font-size: 20px;
 }
+
+.btn-nick {
+    display: block;
+    margin: 0 auto;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    .input {
+        font-size: 12px; 
+        width: 86%;
+    }
+
+    .btn-submit {
+        font-size: 14px; 
+    }
+
+    .btn-nick {
+        font-size: 14px; 
+    }
+}

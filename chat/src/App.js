@@ -10,9 +10,13 @@ class App extends React.Component  {
     this.host = 'st-chat.shas.tel';
     this.uri = `ws://${this.host}`;
     this.socket = new WebSocket(this.uri);
+    const myStorage = window.localStorage;
+    if (myStorage.getItem('Nickname')) {
+      this.name = myStorage.getItem('Nickname');
+    } else {
+      this.name = "";
+    }
     this.state = {
-      name: "",
-      message: "",
       data: []
     }
   }
@@ -23,14 +27,17 @@ class App extends React.Component  {
         this.socket.onopen = () => {
           this.socket.onmessage = (event) =>  {
             const arr = JSON.parse(event.data);
+            console.log('+');
             const res = this.state.data.concat(...arr);
             this.setState({data: res});
           }
         }
+        this.socket.onclose = () => {
+          console.log('Connection is closed.');
+        }
         this.socket.onerror = (error) => {
             console.log('WebSocket Error: ' + error);
         };
-        
     }
   }
   
@@ -39,7 +46,7 @@ class App extends React.Component  {
     return (
       <div className="App">
         <Header/>
-        <CreateMessage socket={ this.socket }/>
+        <CreateMessage socket={ this.socket } nickname={ this.name }/>
         <ChatArea messages={ this.state.data }/>
       </div>
     );
