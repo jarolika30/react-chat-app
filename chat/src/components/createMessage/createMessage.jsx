@@ -4,6 +4,7 @@ import './createMessage.css';
 const CreateMessage = (props)=> {
     let nameRef = props.nickname;
     let textRef = null;
+
     function onSubmitFunc() {
         props.socket.send(JSON.stringify({from: nameRef.value, message: textRef.value }));
         textRef.value = '';

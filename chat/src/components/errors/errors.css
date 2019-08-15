@@ -1,0 +1,18 @@
+.error {
+    position: fixed;
+    top: 4.5%;
+    left: 40%;
+    color: red;
+}
+
+@media screen and (max-width: 700px) {
+    .error {
+        position: static;
+        width: 150px;
+        margin-left: 20px;
+        box-sizing: border-box;
+        padding: 2px;
+        padding-top: 17px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,23 @@
+.turn {
+    margin-top: 23px;
+}
+
+.fas {
+    color: white;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: #00FF7F;
+}
+
+@media screen and (max-width: 700px) {
+    .turn {
+        margin-top: 23px;
+        margin-left: 20px;
+    }
+}
+

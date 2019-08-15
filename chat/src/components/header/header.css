@@ -1,10 +1,22 @@
 .header {
+    display: flex;
+    flex-direction: row;
     grid-area: header;
     background: #393b4f;
     color: #FFFAF0;
+    justify-content: center;
+    align-content: space-between;
 }
 
 .title {
     font-size: 40px;
     margin-top: 5px;
+}
+
+@media screen and (max-width: 700px) {
+    .title {
+        font-size: 20px; 
+        margin-top: 15px;
+        margin-left: 5px;
+    }
 }
