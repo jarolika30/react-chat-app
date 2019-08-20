@@ -9,7 +9,6 @@ class App extends React.Component  {
     super(props);
     this.host = 'st-chat.shas.tel';
     this.uri = `ws://${this.host}`;
-    this.socket = new WebSocket(this.uri);
     const myStorage = window.localStorage;
     if (myStorage.getItem('Nickname')) {
       this.name = myStorage.getItem('Nickname');
@@ -20,11 +19,12 @@ class App extends React.Component  {
       data: [],
       turn_color: "white",
       error_msg: "",
-      connected: true
     }
+    this.startSocket();
   }
 
   startSocket = () => {
+    this.socket = new WebSocket(this.uri);
     if(typeof(WebSocket)=="undefined") { 
         alert("Your browser does not support WebSockets. Try to use Chrome or Safari."); 
     } else {
@@ -40,9 +40,7 @@ class App extends React.Component  {
           console.log('Connection is closed.');
           this.setState({turn_color: "red"});
           this.setState({ error_msg: "Сonnection aborted, attempt to reconnect..."});
-          this.socket = null;
-          this.socket = new WebSocket(this.uri);
-          setTimeout(this.startSocket, 1000);
+          this.startSocket();
         }
         this.socket.onerror = (error) => {
             this.setState({turn_color: "red"});
@@ -52,7 +50,6 @@ class App extends React.Component  {
   }
   
   render() {
-    this.startSocket();
     return (
       <div className="App">
         <Header color={this.state.turn_color} error={ this.state.error_msg}/>

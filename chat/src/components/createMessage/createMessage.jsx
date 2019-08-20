@@ -6,6 +6,7 @@ const CreateMessage = (props)=> {
     let textRef = null;
 
     function onSubmitFunc() {
+        console.log('&#x1F440;');
         props.socket.send(JSON.stringify({from: nameRef.value, message: textRef.value }));
         textRef.value = '';
     }

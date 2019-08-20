@@ -20,7 +20,7 @@
     margin-left: 12px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (min-width: 601px) and (max-width: 700px) {
     .label {
         margin-left: 5%;
     }
@@ -36,5 +36,48 @@
 
     .radio + .notify-text {
         margin-left: 6px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .notify-text {
+        margin-top: 23px;
+        font-size: 16px;
+        margin-right: 20px;
+    }
+
+    .radio + .notify-text {
+        margin-left: 4px;
+    }
+
+    .label {
+        margin-left: 12%;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 600px) {
+    .notify-text {
+        margin-top: 23px;
+        font-size: 16px;
+        margin-right: 20px;
+    }
+    .label {
+        margin-left: 20%;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 800px) {
+    .notify-text {
+        margin-top: 24px;
+        font-size: 16px;
+        margin-right: 5px;
+    }
+
+    .radio + .notify-text {
+        margin-left: 4px;
+    }
+
+    .label {
+        margin-left: 30%;
     }
 }
